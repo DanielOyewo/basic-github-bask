@@ -1,0 +1,62 @@
+{
+	"info": {
+		"_postman_id": "53766efd-3e00-4943-b1bb-6f094054196b",
+		"name": "My API  Tutorial Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25897638"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code should be 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Status code should not be  201\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code should be 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name should have OK string\", function () {\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"});\r",
+							"pm.test(\"Status code name should have OK string\", function () {\r",
+							"    pm.response.to.have.status(\"OKAY\");\r",
+							"});\r",
+							"pm.test(\"Status code name should have OK string\", function () {\r",
+							"    pm.response.to.have.status(\"Ok\");\r",
+							"});\r",
+							"pm.test(\"Status code name should have OK string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/swagger.json",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"swagger.json"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
