@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "6e2a9148-45b1-4ba3-a124-87c19dca09a2",
-		"name": "Swagger Petstore",
+		"_postman_id": "e5f3370c-8c1a-4687-9a45-29c3ac599e71",
+		"name": "Swagger Petstore 2",
 		"description": "This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.\n\nContact Support:\n Email: apiteam@swagger.io",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "25897638"
@@ -75,15 +75,11 @@
 											}
 										],
 										"url": {
-											"raw": "https://petstore.swagger.io/v2/pet/:petId",
-											"protocol": "https",
+											"raw": "{{baseUrl}}/pet/:petId",
 											"host": [
-												"petstore",
-												"swagger",
-												"io"
+												"{{baseUrl}}"
 											],
 											"path": [
-												"v2",
 												"pet",
 												":petId"
 											],
@@ -1163,15 +1159,11 @@
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "https://petstore.swagger.io/v2/store/order/:orderId",
-													"protocol": "https",
+													"raw": "{{baseUrl}}/store/order/:orderId",
 													"host": [
-														"petstore",
-														"swagger",
-														"io"
+														"{{baseUrl}}"
 													],
 													"path": [
-														"v2",
 														"store",
 														"order",
 														":orderId"
@@ -1303,15 +1295,11 @@
 												"method": "DELETE",
 												"header": [],
 												"url": {
-													"raw": "https://petstore.swagger.io/v2/store/order/:orderId",
-													"protocol": "https",
+													"raw": "{{baseUrl}}/store/order/:orderId",
 													"host": [
-														"petstore",
-														"swagger",
-														"io"
+														"{{baseUrl}}"
 													],
 													"path": [
-														"v2",
 														"store",
 														"order",
 														":orderId"
@@ -1427,15 +1415,11 @@
 											}
 										},
 										"url": {
-											"raw": "https://petstore.swagger.io/v2/store/order",
-											"protocol": "https",
+											"raw": "{{baseUrl}}/store/order",
 											"host": [
-												"petstore",
-												"swagger",
-												"io"
+												"{{baseUrl}}"
 											],
 											"path": [
-												"v2",
 												"store",
 												"order"
 											]
@@ -1501,6 +1485,15 @@
 							"listen": "test",
 							"script": {
 								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"console.log(jsonData.sold)\r",
+									"pm.environment.set(\"sold\", 32);\r",
+									"console.log(jsonData.pending)\r",
+									"pm.environment.set(\"pending\", 5);\r",
+									"console.log(jsonData.available)\r",
+									"pm.environment.set(\"available\", 667);\r",
+									"console.log(jsonData.string)\r",
+									"pm.environment.set(\"string\", 282);\r",
 									"pm.test(\"Status code should not be  201\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
@@ -1510,22 +1503,9 @@
 									"pm.test(\"Status code name should have OK string\", function () {\r",
 									"    pm.response.to.have.status(\"OK\");\r",
 									"});\r",
-									"\r",
-									"var jsonData = pm.response.json();\r",
-									"\r",
-									"console.log(jsonData)\r",
-									"\r",
-									"console.log(jsonData.pending)\r",
-									"\r",
-									"pm.test(\"confirm that the value sold is 12\", function () {\r",
-									"    pm.expect(jsonData.sold).to.eql(12);\r",
-									"});\r",
-									"\r",
 									"pm.test(\"confirm that the inventory contains available\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"available\");\r",
-									"});\r",
-									"\r",
-									""
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -1584,15 +1564,11 @@
 									}
 								],
 								"url": {
-									"raw": "https://petstore.swagger.io/v2/store/inventory",
-									"protocol": "https",
+									"raw": "{{baseUrl}}/store/inventory",
 									"host": [
-										"petstore",
-										"swagger",
-										"io"
+										"{{baseUrl}}"
 									],
 									"path": [
-										"v2",
 										"store",
 										"inventory"
 									]
